@@ -41,28 +41,15 @@ namespace Snake {
     /// </summary>
     public partial class App : System.Windows.Application {
         
-        private bool _contentLoaded;
-        
         /// <summary>
         /// InitializeComponent
         /// </summary>
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "7.0.5.0")]
         public void InitializeComponent() {
-            if (_contentLoaded) {
-                return;
-            }
-            _contentLoaded = true;
             
             #line 5 "..\..\..\App.xaml"
             this.StartupUri = new System.Uri("MainWindow.xaml", System.UriKind.Relative);
-            
-            #line default
-            #line hidden
-            System.Uri resourceLocater = new System.Uri("/Snake;component/app.xaml", System.UriKind.Relative);
-            
-            #line 1 "..\..\..\App.xaml"
-            System.Windows.Application.LoadComponent(this, resourceLocater);
             
             #line default
             #line hidden
