@@ -41,8 +41,10 @@ namespace Snake
             {
                 for (int j = 0; j < cols; j++)
                 {
-                    Image image = new Image();
-                    image.Source = null;
+                    Image image = new Image
+                    {
+                        Source = Images.Empty
+                    };  
 
                     images[i, j] = image;
                     GameGrid.Children.Add(image);
