@@ -20,9 +20,36 @@ namespace Snake
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        private readonly int rows = 15;
+        private readonly int cols = 15;
+        private readonly Image[,] gridImages;
+
         public MainWindow()
         {
             InitializeComponent();
+            gridImages = SetupGrid();
+        }
+
+        private Image[,] SetupGrid()
+        {
+            Image[,] images = new Image[rows, cols];
+            GameGrid.Rows = rows;
+            GameGrid.Columns = cols;   
+
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < cols; j++)
+                {
+                    Image image = new Image();
+                    image.Source = null;
+
+                    images[i, j] = image;
+                    GameGrid.Children.Add(image);
+                }
+            }
+
+            return images;
         }
     }
 }
