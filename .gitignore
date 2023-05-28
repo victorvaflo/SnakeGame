@@ -1,7 +1,7 @@
 FileContentIndex/
 *.suo
 *.user
-/debug/
+*/debug/*
 [Tt]emp/
 *.log
 *.csproj.user
