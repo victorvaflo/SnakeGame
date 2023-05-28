@@ -1,3 +1,10 @@
 FileContentIndex/
-.suo
+*.suo
+*.user
 /debug/
+[Tt]emp/
+*.log
+*.csproj.user
+packages/
+bin/
+obj/
