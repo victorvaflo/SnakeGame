@@ -14,6 +14,7 @@ namespace Snake
         public int Score { get; private set; }
         public bool GameOver { get; private set; }
 
+        private readonly LinkedList<Direction> dirChanges = new LinkedList<Direction>();
         private readonly LinkedList<Position> snakePositions = new LinkedList<Position>();
         private readonly Random random = new Random();
 
@@ -109,9 +110,32 @@ namespace Snake
             snakePositions.RemoveLast();
         }
 
+        private Direction GetLastDirection()
+        {
+            if (dirChanges.Count ==0) {
+                return Dir;
+            }
+            return dirChanges.Last.Value;
+        }
+
+        private bool CanChangeDirection(Direction newDir)
+        {
+            if (dirChanges.Count == 2)
+            {
+                return false;
+            }
+
+            Direction lastDir = GetLastDirection();
+            return newDir != lastDir && newDir != lastDir.Opposite();
+        }
+
         public void ChangeDirection(Direction dir)
         {
-            Dir = dir;
+
+            if (CanChangeDirection(dir))
+            {
+                dirChanges.AddLast(dir);
+            }
         }
 
         //If we reach a wall 
@@ -141,6 +165,12 @@ namespace Snake
         //Moves the snake one step in the current direction
         public void Move()
         {
+            if (dirChanges.Count > 0)
+            {
+                Dir = dirChanges.First.Value;
+                dirChanges.RemoveFirst();
+            }
+
             Position newHeadPos = HeadPosition().Translate(Dir);
             //Check what the head will hit using the WillHit Method
             GridValue hit = WillHit(newHeadPos);
